@@ -1,1 +1,20 @@
-{{outlet}}
+<div class="form-container">
+  <form>
+    <h2>
+      Login
+    </h2>
+
+    <input placeholder="E-mail">
+    <input placeholder="Password">
+
+    <button>
+      Login
+    </button>
+
+  </form>
+  <p>
+    {{#link-to 'signup'}}
+      Signup
+    {{/link-to}}
+  </p>
+</div>
