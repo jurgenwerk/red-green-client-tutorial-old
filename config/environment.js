@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'red-green-tutorial',
     environment: environment,
     baseURL: '/',
+    apiNamespace: 'api/v1',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -25,6 +26,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.serverURL = 'http://localhost:3000';
+    ENV.apiBaseURL = ENV.serverURL + '/' + ENV.apiNamespace;
   }
 
   if (environment === 'test') {
