@@ -1,20 +1,24 @@
 <div class="form-container">
-  <form>
+  <form {{action 'login' on="submit"}}>
     <h2>
       Login
     </h2>
 
-    <input placeholder="E-mail">
-    <input placeholder="Password">
+    {{input value=username placeholder="E-mail"}}
+    {{input value=password placeholder="password" type="password"}}
 
-    <button>
+    <p>
+      {{errorMessage}}
+    </p>
+
+    <button {{action 'login' username password}}>
       Login
     </button>
 
+    <p>
+      {{#link-to 'signup'}}
+        Signup
+      {{/link-to}}
+    </p>
   </form>
-  <p>
-    {{#link-to 'signup'}}
-      Signup
-    {{/link-to}}
-  </p>
 </div>

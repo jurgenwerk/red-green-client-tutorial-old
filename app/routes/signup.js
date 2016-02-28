@@ -3,8 +3,9 @@ import ENV from "../config/environment";
 
 export default Ember.Route.extend({
   ajax: Ember.inject.service(),
+  session: Ember.inject.service(),
   actions: {
-    signup: function(email, password) {
+    signup(email, password) {
       const userParams = {
         data: {
           attributes: {
@@ -21,8 +22,7 @@ export default Ember.Route.extend({
       });
 
       request.then(() => {
-        alert("Signed up!");
-        this.transitionTo('login');
+        this.get('session').authenticate('authenticator:oauth2', email, password);
       }).catch((response) => {
         this.controller.set('signupError', 'Signup error.');
       });
