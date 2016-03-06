@@ -13,7 +13,7 @@
 
   <div class="user-actions">
     <a>
-      user@example.com
+      {{session.currentUser.email}}
     </a>
 
     <button {{action 'logout'}}>
