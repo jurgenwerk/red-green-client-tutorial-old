@@ -11,23 +11,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     }
   },
   model() {
-    return [
-      {
-        value: 310,
-        changeType: "income",
-        entryDate: "12-12-2015"
-      },
-      {
-        value: 400,
-        changeType: "expense",
-        entryDate: "12-12-2015"
-      },
-      {
-        value: 245,
-        changeType: "expense",
-        entryDate: "12-12-2015"
-      }
-    ];
+    return this.store.findAll('balance-change');
   },
   actions: {
     logout() {
