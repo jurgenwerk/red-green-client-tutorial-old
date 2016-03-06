@@ -1,1 +1,15 @@
 <h1>Overview</h1>
+
+{{#each model as |balanceChange|}}
+  <p>
+    {{balanceChange.changeType}}: {{balanceChange.value}} ({{balanceChange.entryDate}})
+  </p>
+{{else}}
+  <p>
+    No data.
+  </p>
+{{/each}}
+
+<p>
+  Total: {{model.length}}
+</p>
