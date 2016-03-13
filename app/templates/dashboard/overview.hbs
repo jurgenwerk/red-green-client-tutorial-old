@@ -1,15 +1,7 @@
-<h1>Overview</h1>
+<h2>
+  Earned: {{money incomeSum session.currentUser.currencySymbol}}
+</h2>
 
-{{#each model as |balanceChange|}}
-  <p>
-    {{balanceChange.changeType}}: {{balanceChange.value}} ({{balanceChange.entryDate}})
-  </p>
-{{else}}
-  <p>
-    No data.
-  </p>
-{{/each}}
-
-<p>
-  Total: {{model.length}}
-</p>
+<h2>
+  Spent: {{money expenseSum session.currentUser.currencySymbol}}
+</h2>

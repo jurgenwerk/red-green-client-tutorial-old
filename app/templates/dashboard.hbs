@@ -28,7 +28,11 @@
       {{#link-to 'dashboard.overview'}}
         Overview
         <p>
-          $100 left
+          {{#if (lt sumDifference 0)}}
+            {{money sumDifference "$"}} in the red
+          {{else}}
+            {{money sumDifference "$"}} left
+          {{/if}}
         </p>
       {{/link-to}}
     </li>
@@ -36,7 +40,7 @@
       {{#link-to 'dashboard.expenses'}}
         Expenses
         <p>
-          $50
+          {{money expenseSum "$"}}
         </p>
       {{/link-to}}
     </li>
@@ -44,12 +48,13 @@
       {{#link-to 'dashboard.incomes'}}
         Incomes
         <p>
-          $50
+          {{money incomeSum "$"}}
         </p>
       {{/link-to}}
     </li>
   </ul>
 </div>
+
 
 <div class="main">
   {{outlet}}
