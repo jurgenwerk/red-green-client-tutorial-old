@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import accounting from "accounting"
+import accounting from "accounting";
 
 export function money(params/*, hash*/) {
   // value is in cents

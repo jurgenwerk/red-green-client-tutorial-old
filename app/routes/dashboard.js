@@ -3,6 +3,11 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   session: Ember.inject.service(),
+  queryParams: {
+    period: {
+      refreshModel: true
+    }
+  },
   beforeModel(transition) {
     this._super(...arguments);
     if (transition.targetName === "dashboard.index"){
@@ -10,8 +15,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       this.transitionTo('dashboard.overview');
     }
   },
-  model() {
-    return this.store.findAll('balance-change');
+  model(params) {
+    return this.store.query('balance-change', { filter: { period: params.period } });
   },
   actions: {
     logout() {
