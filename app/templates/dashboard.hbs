@@ -1,60 +1,15 @@
-<div class="navbar">
-  <div class="navbar-period">
-    <button {{action 'goPeriodBack'}}>
-      &#60;
-    </button>
-    <span class="period-title">
-      {{period-in-words period}}
-    </span>
-    <button {{action 'goPeriodNext'}}>
-      >
-    </button>
-  </div>
+{{nav-bar
+  currentUser=session.currentUser
+  goPeriodBack=(action 'goPeriodBack')
+  goPeriodNext=(action 'goPeriodNext')
+  period=period
+}}
 
-  <div class="user-actions">
-    <a>
-      {{session.currentUser.email}}
-    </a>
-
-    <button {{action 'logout'}}>
-      Sign out
-    </button>
-  </div>
-</div>
-
-<div class="sidebar">
-  <ul class="sidebar-items">
-    <li class="sidebar-item">
-      {{#link-to 'dashboard.overview'}}
-        Overview
-        <p>
-          {{#if (lt sumDifference 0)}}
-            {{money sumDifference "$"}} in the red
-          {{else}}
-            {{money sumDifference "$"}} left
-          {{/if}}
-        </p>
-      {{/link-to}}
-    </li>
-    <li class="sidebar-item">
-      {{#link-to 'dashboard.expenses'}}
-        Expenses
-        <p>
-          {{money expenseSum "$"}}
-        </p>
-      {{/link-to}}
-    </li>
-    <li class="sidebar-item">
-      {{#link-to 'dashboard.incomes'}}
-        Incomes
-        <p>
-          {{money incomeSum "$"}}
-        </p>
-      {{/link-to}}
-    </li>
-  </ul>
-</div>
-
+{{side-bar
+  sumDifference=sumDifference
+  expenseSum=expenseSum
+  incomeSum=incomeSum
+}}
 
 <div class="main">
   {{outlet}}
