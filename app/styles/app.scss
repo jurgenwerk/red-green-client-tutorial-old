@@ -10,6 +10,8 @@ body {
   font-family: monospace;
 }
 
+.red { color: $red }
+
 .form-container {
   width: 100%;
   text-align: center;
@@ -26,10 +28,6 @@ body {
       border-radius: 3px;
       border: 2px solid gray;
       padding-left: 10px;
-    }
-
-    button {
-      // display: b
     }
   }
 }
@@ -228,4 +226,8 @@ a.button {
 
 .expense-bar .inner-bar {
   background-color: $red;
+}
+
+button[disabled] {
+  opacity: 0.4;
 }

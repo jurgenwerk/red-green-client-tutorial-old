@@ -11,7 +11,9 @@ Router.map(function() {
   this.route('dashboard', { path: '/' }, function() {
     this.route('overview');
     this.route('incomes', function() {});
-    this.route('expenses', function() {});
+    this.route('expenses', function() {
+      this.route('new');
+    });
   });
 });
 
