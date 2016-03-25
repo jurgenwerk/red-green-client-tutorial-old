@@ -13,6 +13,7 @@
         tagName="li"
         balanceChange=income
         currencySymbol="$"
+        delete=(action 'delete')
       }}
     {{/each}}
   </ul>
@@ -20,4 +21,6 @@
   No incomes for selected period.
 {{/if}}
 
-{{yield}}
+{{#link-to 'dashboard.incomes.new' class="button"}}
+  Add
+{{/link-to}}
