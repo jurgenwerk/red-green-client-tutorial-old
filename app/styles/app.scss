@@ -185,6 +185,11 @@ button, .button {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+
+  &.button-offset-top {
+    display: block;
+    margin-top: 15px;
+  }
 }
 
 a.button {

@@ -12,9 +12,9 @@
   </div>
 
   <div class="user-actions">
-    <a>
+    {{#link-to 'dashboard.settings'}}
       {{currentUser.email}}
-    </a>
+    {{/link-to}}
 
     <button {{action 'logout'}}>
       Sign out

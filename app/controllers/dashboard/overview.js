@@ -3,6 +3,7 @@ import BalanceChangePropertiesMixin from 'red-green-tutorial/mixins/balance-chan
 
 export default Ember.Controller.extend(BalanceChangePropertiesMixin, {
   dashboard: Ember.inject.controller(),
+  session: Ember.inject.service(),
   period: Ember.computed.alias('dashboard.period'),
   avgExpensePerDay: Ember.computed('expenseSum', function() {
     const dateParts = this.get('period').split("-");
