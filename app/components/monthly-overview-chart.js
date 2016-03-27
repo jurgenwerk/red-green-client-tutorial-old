@@ -28,11 +28,11 @@ export default Ember.Component.extend({
     return { labels: labels, series: [incomeSums, expenseSums] };
   },
   didRender() {
+    this._super(...arguments);
     this.renderChart();
   },
   renderChart() {
     const { labels, series } = this.getSeriesData();
-
     new Chartist.Bar('.monthly-overview-chart', {
       labels: labels,
       series: series,
