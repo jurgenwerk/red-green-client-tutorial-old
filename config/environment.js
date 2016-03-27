@@ -27,8 +27,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.serverURL = 'http://localhost:3000';
-    ENV.apiBaseURL = ENV.serverURL + '/' + ENV.apiNamespace;
+    ENV.serverURL = 'http://localhost:3000/';
   }
 
   if (environment === 'test') {
@@ -44,13 +43,15 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.serverURL = 'https://red-green-api.herokuapp.com/';
   }
 
   ENV['ember-simple-auth'] = {
     routeAfterAuthentication: 'dashboard',
     routeIfAlreadyAuthenticated: 'dashboard'
   };
+
+  ENV.apiBaseURL = ENV.serverURL + '/' + ENV.apiNamespace;
 
   return ENV;
 };
