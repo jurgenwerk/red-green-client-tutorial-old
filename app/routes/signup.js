@@ -6,6 +6,8 @@ export default Ember.Route.extend({
   session: Ember.inject.service(),
   actions: {
     signup(email, password) {
+      this.controller.set('isSigningUp', true);
+
       const userParams = {
         data: {
           attributes: {
@@ -14,18 +16,17 @@ export default Ember.Route.extend({
             currency: 'USD'
           }
         }
-      }
+      };
 
       const request = this.get('ajax').request(`${ENV.apiBaseURL}/users`, {
         method: 'POST',
         data: userParams
       });
 
-      request.then(() => {
-        this.get('session').authenticate('authenticator:oauth2', email, password);
-      }).catch((response) => {
-        this.controller.set('signupError', 'Signup error.');
-      });
+      request
+        .then(() => this.get('session').authenticate('authenticator:oauth2', email, password))
+        .catch(() => this.controller.set('signupError', 'Signup error.'))
+        .finally(() => this.controller.set('isSigningUp', false));
     }
   }
 });

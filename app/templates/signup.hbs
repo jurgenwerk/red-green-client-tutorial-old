@@ -13,8 +13,12 @@
       </p>
     {{/if}}
 
-    <button {{action 'signup' email password}}>
-      Sign up
+    <button {{action 'signup' email password}} disabled={{isSigningUp}}>
+      {{#if isSigningUp}}
+        Signing up...
+      {{else}}
+        Sign up
+      {{/if}}
     </button>
 
     <p>

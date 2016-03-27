@@ -11,8 +11,12 @@
       {{errorMessage}}
     </p>
 
-    <button {{action 'login' username password}}>
-      Login
+    <button {{action 'login' username password}} disabled={{isLoggingIn}}>
+      {{#if isLoggingIn}}
+        Logging in ...
+      {{else}}
+        Login
+      {{/if}}
     </button>
 
     <p>
