@@ -18,8 +18,14 @@ export default Ember.Component.extend({
     // take the user input and turn it into cents
     return Math.round(accounting.unformat(input)*100);
   },
-  dateForInput: Ember.computed('balanceChangeData.entryDate', function() {
-    return new Date(this.get('balanceChangeData.entryDate'));
+  valueForDate: Ember.computed('balanceChangeData.entryDate', {
+    get(key) {
+      return this.get('balanceChangeData.entryDate');
+    },
+    set(key, value) {
+      this.set('balanceChangeData.entryDate', moment(value).format("YYYY-MM-DD"));
+      return value;
+    }
   }),
   valueIsNegative: Ember.computed('balanceChangeData.value', function() {
     return this.get('balanceChangeData.value') < 0;
@@ -31,12 +37,8 @@ export default Ember.Component.extend({
     return this.get('balanceChange.isSaving') || !this.get('isValid');
   }),
   actions: {
-    setEntryDate(date) {
-      this.set('balanceChangeData.entryDate', moment(date).format("YYYY-MM-DD"));
-    },
     updateValueFromInput(value) {
       this.set('balanceChangeData.value', this.unformatInput(value));
-      console.log(this.get('balanceChangeData'));
     }
   }
 });

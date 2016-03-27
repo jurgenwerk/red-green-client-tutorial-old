@@ -1,4 +1,4 @@
-{{pick-a-date date=dateForInput on-selected=(action 'setEntryDate')}}
+{{pikaday-input value=valueForDate format="YYYY-MM-DD"}}
 <input value={{valueForInput}} oninput={{action 'updateValueFromInput' value="target.value"}} autofocus />
 {{currencySymbol}}
 
