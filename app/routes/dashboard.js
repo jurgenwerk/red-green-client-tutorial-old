@@ -19,9 +19,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     return this.store.query('balance-change', { filter: { period: params.period } });
   },
   actions: {
-    logout() {
-      this.get('session').invalidate();
-    },
     refreshRoute() {
       this.refresh();
     }
